@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "263d66be-95d3-462d-a579-b32fb27249bf",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 120,
+  "height": 100,
+  "platformSettings": {},
+  "subMetas": {
+    "massageBoxMoveUpHover": {
+      "ver": "1.0.6",
+      "uuid": "8ef30585-05b3-47c3-8e56-316ea7881282",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "263d66be-95d3-462d-a579-b32fb27249bf",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": -7.5,
+      "trimX": 32,
+      "trimY": 43,
+      "width": 55,
+      "height": 29,
+      "rawWidth": 120,
+      "rawHeight": 100,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
