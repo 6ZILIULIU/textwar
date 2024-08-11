@@ -8,7 +8,7 @@
   "group-list": [
     "default"
   ],
-  "start-scene": "current",
+  "start-scene": "adabb4d3-115a-409f-87a0-978ca43f9861",
   "design-resolution-width": 750,
   "design-resolution-height": 1334,
   "fit-width": false,
@@ -33,5 +33,8 @@
     }
   },
   "preview-port": 7456,
-  "clear-simulator-cache": true
+  "clear-simulator-cache": true,
+  "migrate-history": [
+    "cloud-function"
+  ]
 }

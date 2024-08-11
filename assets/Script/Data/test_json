@@ -1,21 +1,19 @@
 export default class test_json {
-    games = [
+    events = [
         {
             "id": 1,
-            "name": "博岚战役",
-            "ourForce": [
-                { "unitId": 1, "name": "", "unitType": "infantry", "count": 10 },
-                { "unitId": 2, "name": "", "unitType": "tank", "count": 1 },
-                { "unitId": 3, "name": "", "unitType": "infantry", "count": 3 },
-            ],
-            "enemyForce": [
-                { "unitId": 1, "name": "", "unitType": "infantry", "count": 10 },
-                { "unitId": 2, "name": "", "unitType": "infantry", "count": 10 },
-                { "unitId": 3, "name": "", "unitType": "infantry", "count": 10 },
-                { "unitId": 4, "name": "", "unitType": "tank", "count": 1 },
-                { "unitId": 5, "name": "", "unitType": "tank", "count": 1 },
-                { "unitId": 6, "name": "", "unitType": "infantry", "count": 3 },
-            ],
+            "title": "工作变动",
+            "description": "由于公司业务调整，您需要重新选择工作地点。您愿意接受新的工作地点吗？",
+            "selection": [
+                {
+                    "name": "是",
+                    "funcId": 2,
+                },
+                {
+                    "name": "否",
+                    "funcId": 2,
+                }
+            ]
         }
     ]
 }

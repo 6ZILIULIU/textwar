@@ -3,8 +3,8 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class MsgPanel extends cc.Component {
 
-    @property(cc.ScrollView)
-    infoBoard: cc.ScrollView = null;
+    @property(cc.Node)
+    infoBoard: cc.Node = null;
 
     @property(cc.Prefab)
     infoPrefab: cc.Prefab = null;

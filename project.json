@@ -1,7 +1,7 @@
 {
   "engine": "cocos2d-html5",
   "packages": "packages",
-  "version": "2.4.11",
+  "version": "2.4.12",
   "name": "battle_cmder",
   "id": "f9b531ad-b688-4603-8045-3711c5c9010d",
   "isNew": false
