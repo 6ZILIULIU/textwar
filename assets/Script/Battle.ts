@@ -10,6 +10,7 @@ export default class Battle extends cc.Component {
 
     start() {
         this.init()
+        cc.find('Canvas').emit('echo',"步兵3 正朝着[ 6 , 8 ]坐标前进")
     }
 
     async init() {

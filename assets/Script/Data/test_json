@@ -1,19 +1,9 @@
 export default class test_json {
     events = [
         {
-            "id": 1,
-            "title": "工作变动",
-            "description": "由于公司业务调整，您需要重新选择工作地点。您愿意接受新的工作地点吗？",
-            "selection": [
-                {
-                    "name": "是",
-                    "funcId": 2,
-                },
-                {
-                    "name": "否",
-                    "funcId": 2,
-                }
-            ]
+            name: "event1",
+            description: "This is event 1",
+            date: "2022-01-01",
         }
     ]
 }
