@@ -11,6 +11,7 @@ export default class Battle extends cc.Component {
     cuisine: string = "";
     background: string = "";
 
+    
     start() {
         this.init()
     }
@@ -19,7 +20,7 @@ export default class Battle extends cc.Component {
         this.msgPanel.init();
         await this.msgPanel.createInfo("我出生于")
         await this.msgPanel.createSelection([
-            { title: "佃农", callback: this.onChooseBackground.bind(this, '佃农') },
+            { title: "贫苦人家", callback: this.onChooseBackground.bind(this, '贫苦人家') },
             { title: "富裕人家", callback: this.onChooseBackground.bind(this, '富裕人家') },
         ])
         this.addBackgroundAttr()
