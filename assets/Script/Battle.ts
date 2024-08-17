@@ -24,10 +24,6 @@ export default class Battle extends cc.Component {
         await this.msgPanel.createSelection("6.苏菜", this.chooseCuiSine.bind(this, '苏菜'))
         await this.msgPanel.createSelection("7.闽菜", this.chooseCuiSine.bind(this, '闽菜'))
         await this.msgPanel.createSelection("8.徽菜", this.chooseCuiSine.bind(this, '徽菜'))
-
-
-
-
     }
     chooseCuiSine(cuisine: string) {
         this.msgPanel.createInfo(`你选择了${cuisine}`)
