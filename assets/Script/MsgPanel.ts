@@ -9,6 +9,8 @@ export default class MsgPanel extends cc.Component {
 
     @property(cc.Prefab)
     infoPrefab: cc.Prefab = null;
+    @property(cc.Prefab)
+    selectionPrefab: cc.Prefab = null;
 
     infoLabelHeight = 30;
 
@@ -33,7 +35,7 @@ export default class MsgPanel extends cc.Component {
     }
 
     onReceiveInfo(infoStr: string, option?: any) {
-        this.echo(infoStr);
+        this.createInfo(infoStr);
     }
 
     showNewestMsg() {
@@ -72,6 +74,7 @@ export default class MsgPanel extends cc.Component {
         let str = selectInfo;
         // str = str.match(/.{1,30}/g).join('\n');
         await this.typeingEffect(label, str);
+        infoLabelNode.on(cc.Node.EventType.TOUCH_END, callback);
         // this.showNewestMsg();
     }
 
