@@ -55,6 +55,19 @@ class Utils {
             })
         })
     }
+
+    static async playRandKeyEffect(){
+        let num = Math.ceil(Math.random() * 32) + "";
+        num = num.padStart(3, '0');
+        let clip = await Utils.loadAsset(`single_key`, `keypress-${num}`, cc.AudioClip)
+        cc.audioEngine.playEffect(clip, false);
+    }
+    static async play8BitRandKeyEffect(){
+        let num = Math.ceil(Math.random() * 4) + "";
+        // num = num.padStart(3, '0');
+        let clip = await Utils.loadAsset(`typing_effect`, `Blip_Select2`, cc.AudioClip)
+        cc.audioEngine.playEffect(clip, false);
+    }
 }
 
 window["Utils"] = Utils;

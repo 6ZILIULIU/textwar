@@ -2,6 +2,7 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class MsgPanel extends cc.Component {
+    static instance: MsgPanel = null;
 
     @property(cc.ScrollView)
     infoBoard: cc.ScrollView = null;
@@ -12,6 +13,9 @@ export default class MsgPanel extends cc.Component {
     infoLabelHeight = 30;
 
 
+    onLoad() {
+        MsgPanel.instance = this;
+    }
 
     init() {
         // TODO: init
@@ -29,14 +33,14 @@ export default class MsgPanel extends cc.Component {
     }
 
     onReceiveInfo(infoStr: string, option?: any) {
-        this.displayInfo(infoStr,);
+        this.echo(infoStr);
     }
 
     showNewestMsg() {
         this.infoBoard.scrollToBottom(0.1);
     }
 
-    displayInfo(infoStr: string) {
+    async createInfo(infoStr: string) {
         // let infoLabelNode = new cc.Node('info');
         // infoLabelNode.setPosition(-this.infoBoard.node.width / 2 + 20, 0);
         // infoLabelNode.setAnchorPoint(0, 0.5)
@@ -53,9 +57,25 @@ export default class MsgPanel extends cc.Component {
         // label.string = infoStr;
         let str = infoStr;
         // str = str.match(/.{1,30}/g).join('\n');
-        this.typeingEffect(label, str);
+        await this.typeingEffect(label, str);
         // this.showNewestMsg();
     }
+
+    async createSelection(selectInfo: string, callback: Function) {
+
+        let infoLabelNode = cc.instantiate(this.selectionPrefab);
+        let label = infoLabelNode.getComponent(cc.Label);
+        infoLabelNode.parent = this.infoBoard.content;
+        infoLabelNode.y = this.infoBoard.content.childrenCount * this.infoLabelHeight;
+        this.updateContentHeight();
+        // label.string = infoStr;
+        let str = selectInfo;
+        // str = str.match(/.{1,30}/g).join('\n');
+        await this.typeingEffect(label, str);
+        // this.showNewestMsg();
+    }
+
+
     updateContentHeight() {
         let childHeight = 0;
         this.infoBoard.content.children.forEach(v => {
@@ -66,7 +86,8 @@ export default class MsgPanel extends cc.Component {
 
     async typeingEffect(infoLabel: cc.Label, infoStr: string) {
         for (let i = 0; i < infoStr.length; i++) {
-            await Utils.asyncWait(0.01);
+            await Utils.asyncWait(0.02);
+            await Utils.play8BitRandKeyEffect();
             infoLabel.string += infoStr[i];
             // if (infoLabel.node.width)
         }
@@ -83,3 +104,5 @@ export default class MsgPanel extends cc.Component {
         this.infoBoard.content.children[0].removeFromParent();
     }
 }
+
+window["MsgPanel"] = MsgPanel;

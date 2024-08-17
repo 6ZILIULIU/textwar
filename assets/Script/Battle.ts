@@ -10,12 +10,24 @@ export default class Battle extends cc.Component {
 
     start() {
         this.init()
-        cc.find('Canvas').emit('echo',"步兵3 正朝着[ 6 , 8 ]坐标前进")
     }
 
     async init() {
-        this.msgPanel.clearInfoBoard();
-        this.msgPanel.waitForInfo();
+        this.msgPanel.init();
+        await this.msgPanel.echo("欢迎来到餐厅")
+        await this.msgPanel.echo("请选择你的菜系")
+        await this.msgPanel.createSelection("1.川菜")
+        await this.msgPanel.createSelection("2.粤菜")
+        await this.msgPanel.createSelection("3.湘菜")
+        await this.msgPanel.createSelection("4.鲁菜")
+        await this.msgPanel.createSelection("5.浙菜")
+        await this.msgPanel.createSelection("6.苏菜")
+        await this.msgPanel.createSelection("7.闽菜")
+        await this.msgPanel.createSelection("8.徽菜")
+
+
+
+        
     }
 
     
