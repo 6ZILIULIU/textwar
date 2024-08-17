@@ -12,7 +12,7 @@ export default class MsgPanel extends cc.Component {
     @property(cc.Prefab)
     selectionPrefab: cc.Prefab = null;
 
-    infoLabelHeight = 30;
+    lbHeight = 30;
 
 
     onLoad() {
@@ -54,7 +54,7 @@ export default class MsgPanel extends cc.Component {
         let infoLabelNode = cc.instantiate(this.infoPrefab);
         let label = infoLabelNode.getComponent(cc.Label);
         infoLabelNode.parent = this.infoBoard.content;
-        infoLabelNode.y = this.infoBoard.content.childrenCount * this.infoLabelHeight;
+        infoLabelNode.y = this.infoBoard.content.childrenCount * this.lbHeight;
         this.updateContentHeight();
         // label.string = infoStr;
         let str = infoStr;
@@ -63,19 +63,41 @@ export default class MsgPanel extends cc.Component {
         // this.showNewestMsg();
     }
 
-    async createSelection(selectInfo: string, callback: Function) {
+    curSelectionNodes: cc.Node[] = []
+    async createSelection(selectInfoList: ISelection[]) {
+        for (let i = 0; i < selectInfoList.length; i++) {
+            const selectInfo = selectInfoList[i];
+            let selectionNode = cc.instantiate(this.selectionPrefab);
+            let label = selectionNode.getChildByName('text').getComponent(cc.Label);
+            selectionNode.parent = this.infoBoard.content;
+            selectionNode.y = this.infoBoard.content.childrenCount * this.lbHeight;
+            this.updateContentHeight();
+            // label.string = infoStr;
+            // str = str.match(/.{1,30}/g).join('\n');
+            await this.typeingEffect(label, selectInfo.title);
+            selectionNode['callback'] = selectInfo.callback;
+            selectionNode.on(cc.Node.EventType.TOUCH_END, this.onSelected, this);
 
-        let infoLabelNode = cc.instantiate(this.selectionPrefab);
-        let label = infoLabelNode.getComponent(cc.Label);
-        infoLabelNode.parent = this.infoBoard.content;
-        infoLabelNode.y = this.infoBoard.content.childrenCount * this.infoLabelHeight;
-        this.updateContentHeight();
-        // label.string = infoStr;
-        let str = selectInfo;
-        // str = str.match(/.{1,30}/g).join('\n');
-        await this.typeingEffect(label, str);
-        infoLabelNode.on(cc.Node.EventType.TOUCH_END, callback);
-        // this.showNewestMsg();
+            this.curSelectionNodes.push(selectionNode)
+
+        }
+        await new Promise(resolve => {
+            this.selectCallback = () => {
+                resolve(1);
+            };
+        })
+    }
+
+    selectCallback() { }
+
+    onSelected(event: cc.Event.EventTouch) {
+        if (event.target['callback']) {
+            event.target['callback']()
+        }
+        this.curSelectionNodes.forEach(v => {
+            if (cc.isValid(v)) v.destroy();
+        })
+        this.selectCallback && this.selectCallback()
     }
 
 
@@ -88,6 +110,7 @@ export default class MsgPanel extends cc.Component {
     }
 
     async typeingEffect(infoLabel: cc.Label, infoStr: string) {
+        if (infoStr == null) return;
         for (let i = 0; i < infoStr.length; i++) {
             await Utils.asyncWait(0.02);
             await Utils.play8BitRandKeyEffect();

@@ -1064,6 +1064,9 @@
     "infoPrefab": {
       "__uuid__": "aa3c63ae-2574-401b-9204-1bfefd56e06d"
     },
+    "selectionPrefab": {
+      "__uuid__": "481445ce-7ce7-4a7e-9a2f-a09997f24c2e"
+    },
     "_id": "f21vUQIAJBI4ZlGgsq4E1/"
   },
   {

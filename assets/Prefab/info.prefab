@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "info",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -40,7 +40,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 710,
-      "height": 60
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
