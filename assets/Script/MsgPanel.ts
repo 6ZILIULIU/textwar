@@ -77,7 +77,7 @@ export default class MsgPanel extends cc.Component {
             await this.typeingEffect(label, selectInfo.title);
             selectionNode['callback'] = selectInfo.callback;
             selectionNode.on(cc.Node.EventType.TOUCH_END, this.onSelected, this);
-
+            selectionNode.width = label.node.width + 30;
             this.curSelectionNodes.push(selectionNode)
 
         }

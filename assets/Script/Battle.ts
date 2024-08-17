@@ -8,13 +8,15 @@ export default class Battle extends cc.Component {
     @property(MsgPanel)
     msgPanel: MsgPanel = null;
 
+    cuisine:string = null;
+
     start() {
         this.init()
     }
 
     async init() {
         this.msgPanel.init();
-        await this.msgPanel.createInfo("欢迎来到餐厅")
+        await this.msgPanel.createInfo("服务员a：欢迎光临，先生几位")
         await this.msgPanel.createInfo("请选择你的菜系")
         await this.msgPanel.createSelection([
             { title: "1.川菜", callback: this.chooseCuiSine.bind(this, '川菜') },
@@ -26,11 +28,11 @@ export default class Battle extends cc.Component {
             { title: "7.闽菜", callback: this.chooseCuiSine.bind(this, '闽菜') },
             { title: "8.徽菜", callback: this.chooseCuiSine.bind(this, '徽菜') },
         ])
-        await this.msgPanel.createInfo("请选择你的菜系")
+        await this.msgPanel.createInfo(`你选择了${this.cuisine}`)
+        await this.msgPanel.createInfo(``)
     }
     chooseCuiSine(cuisine: string) {
-        this.msgPanel.createInfo(`你选择了${cuisine}`)
-        // this.msgPanel.createInfo("欢迎来到餐厅")
+        this.cuisine = cuisine;
     }
 
 
