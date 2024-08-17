@@ -8,7 +8,8 @@ export default class Battle extends cc.Component {
     @property(MsgPanel)
     msgPanel: MsgPanel = null;
 
-    cuisine:string = null;
+    cuisine: string = "";
+    background: string = "";
 
     start() {
         this.init()
@@ -16,8 +17,13 @@ export default class Battle extends cc.Component {
 
     async init() {
         this.msgPanel.init();
-        await this.msgPanel.createInfo("服务员a：欢迎光临，先生几位")
-        await this.msgPanel.createInfo("请选择你的菜系")
+        await this.msgPanel.createInfo("我出生于")
+        await this.msgPanel.createSelection([
+            { title: "佃农", callback: this.onChooseBackground.bind(this, '佃农') },
+            { title: "富裕人家", callback: this.onChooseBackground.bind(this, '富裕人家') },
+        ])
+        this.addBackgroundAttr()
+
         await this.msgPanel.createSelection([
             { title: "1.川菜", callback: this.chooseCuiSine.bind(this, '川菜') },
             { title: "2.粤菜", callback: this.chooseCuiSine.bind(this, '粤菜') },
@@ -31,10 +37,23 @@ export default class Battle extends cc.Component {
         await this.msgPanel.createInfo(`你选择了${this.cuisine}`)
         await this.msgPanel.createInfo(``)
     }
+
     chooseCuiSine(cuisine: string) {
         this.cuisine = cuisine;
     }
 
+    onChooseBackground(background: string) {
+        this.background = background;
+    }
+
+    addBackgroundAttr() {
+        if (this.background === '贫苦人家') {
+
+        }
+        else if (this.background === '富裕人家') {
+
+        }
+    }
 
 
 
